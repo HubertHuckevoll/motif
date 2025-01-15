@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# stop docker
+sudo docker stop $(sudo docker ps -a -q)
+
+# Find and terminate Xephyr processes
+echo "Searching for running Xephyr processes..."
+PIDS=$(pgrep Xephyr)
+
+if [ -z "$PIDS" ]; then
+    echo "No Xephyr processes found."
+else
+    echo "Stopping Xephyr processes..."
+    for PID in $PIDS; do
+        echo "Killing process $PID..."
+        kill "$PID"
+    done
+    echo "All Xephyr processes stopped."
+fi
