@@ -1,5 +1,5 @@
 #!/bin/bash
-Xephyr -screen 800x600 :2 &
+Xephyr -screen 1024x768 :2 &
 sudo docker run -it \
     -e DISPLAY=:2 \
     -v /tmp/.X11-unix:/tmp/.X11-unix \
